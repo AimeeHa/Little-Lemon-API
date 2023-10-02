@@ -19,8 +19,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from restaurant import views
 
-router = DefaultRouter(trailing_slash=False)
-router.register(r'tables', views.BookingViewSet)
+router = DefaultRouter()
+router.register('', views.BookingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
