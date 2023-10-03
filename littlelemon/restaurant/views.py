@@ -11,7 +11,11 @@ def home(request):
     return render(request, 'index.html', {})
 
 class MenuItemsView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return []
+        return [IsAuthenticated()]
+
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
